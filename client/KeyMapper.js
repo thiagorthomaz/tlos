@@ -3,10 +3,10 @@
 // Original code by Doug McInnes
 KEY_CODES = {
   32: 'space',
-  97: 'left',
-  119: 'up',
-  100: 'right',
-  115: 'down',
+  65: 'left',
+  87: 'up',
+  68: 'right',
+  83: 'down',
 };
 
 // Creates the array to hold the KEY_CODES and sets all their values
@@ -24,13 +24,14 @@ for (code in KEY_CODES) {
  * it sets the appropriate direction to true to let us know which
  * key it was.
  */
-document.onkeypress = function(e) {
-  var k = e.keyCode || e.which;
-  KEY_STATUS[KEY_CODES[ k ]] = true;
-  if ( k === 32){ //Stop
-    for (code in KEY_CODES) {
-      KEY_STATUS[ KEY_CODES[ code ]] = false;
-    }    
+document.onkeydown = function(e) {
+  
+  // Firefox and opera use charCode instead of keyCode to
+  // return which key was pressed.
+  var keyCode = (e.keyCode || e.keyCode);
+  if (KEY_CODES[keyCode]) {
+    e.preventDefault();
+    KEY_STATUS[KEY_CODES[keyCode]] = true;
   }
 }
 /**
@@ -38,11 +39,11 @@ document.onkeypress = function(e) {
  * any key on the keyboard is released). When a key is released,
  * it sets teh appropriate direction to false to let us know which
  * key it was.
- *
+ */
 document.onkeyup = function(e) {
-  var keyCode = (e.keyCode) ? e.keyCode : e.charCode;
+  var keyCode = (e.keyCode || e.keyCode);
   if (KEY_CODES[keyCode]) {
     e.preventDefault();
     KEY_STATUS[KEY_CODES[keyCode]] = false;
   }
-}*/
+}

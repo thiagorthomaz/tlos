@@ -9,14 +9,20 @@ function Core() {
    */
   this.init = function () {
     
+    // Get the canvas elements
     this.playerCanvas = document.getElementById('player');
+    
+    // Get the context
     this.playerContext = this.playerCanvas.getContext('2d');
     
+    // Initialize objects to contain their context and canvas
     Player.prototype.context = this.playerContext;
-    Player.prototype.width = this.playerCanvas.width;
-    Player.prototype.height = this.playerCanvas.height;
+    Player.prototype.canvasWidth = this.playerCanvas.width;
+    Player.prototype.canvasHeight = this.playerCanvas.height;
     
+    //Initialize the Player object
     this.player = new Player();
+    //
     this.player.init(0, 0);
     this.player.draw();
     this.player.move();

@@ -9,9 +9,10 @@ function Drawable() {
       // Default variables
       this.x = x;
       this.y = y;
+      this.width = 0;
+      this.height = 0;
 	};
-	this.width = 0;
-	this.height = 0;
+
 	// Define abstract function to be implemented in child objects
 	this.draw = function() {
 	};
