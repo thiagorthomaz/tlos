@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      div {
+        float: left;
+        display: block;
+        margin-left: 5em;
+      }
+      label, input { 
+        width: 15em; 
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome!</h1>
+    
+    <div>
+      <h2>Sing In</h2>
+      <form action="../?Controller.Player.singin" method="POST">
+        <label for="nickname">Nickname</label>
+        <input id="nickname" autocomplete="off" name="nickname" required="true">
+        <br>
+        <label for="password">Password</label>
+        <input id="nickname" name="password" type="password" required="true">
+        <br>
+        <button>Login</button>
+      </form>
+      
+    </div>
+    
+    <div>
+      <h2>Sing Up</h2>
+      <form action="../?Controller.Player.singup" method="POST">
+        <label for="nickname">Nickname</label>
+        <input id="nickname" autocomplete="off" name="nickname" required="true">
+        <br>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required="true">
+        <br>
+        <label for="confirm_password">Confirm password</label>
+        <input id="confirm_password" name="confirm_password" type="password" required="true">
+        <br>
+        <button>Save</button>
+      </form>
+    </div>
+    
+  </body>
+</html>
