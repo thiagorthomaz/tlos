@@ -9,11 +9,6 @@ namespace app\model\Buildings;
  */
 class Mill extends \app\model\Buildings\BonusBuilding {
   
-  
-  public function getBonus() {
-    return 10;
-  }
-
   public function getCompatibleBuilding() {
     return "farm";
   }

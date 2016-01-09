@@ -15,6 +15,29 @@ INSERT INTO `Tab_producing` (`id`,`income`) VALUES (8,210);
 INSERT INTO `Tab_producing` (`id`,`income`) VALUES (9,250);
 INSERT INTO `Tab_producing` (`id`,`income`) VALUES (10,300);
 
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(1,2500);
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(2,5000);
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(3,9000);
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(4,1600);
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(5,2600);
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(6,4200);
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(7,6500);
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(8,10000);
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(9,14500);
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(10,20000);
+
+
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(1,500);
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(2,1000);
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(3,2000);
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(4,3000);
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(5,4500);
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(6,6000);
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(7,8000);
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(8,10000);
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(9,12000);
+INSERT INTO `mydb`.`Tab_storage_building`(`level`,`storage`) VALUES(10,15000);
+
 
 INSERT INTO `Tab_building`
 (
@@ -951,11 +974,9 @@ VALUES
 81720,
 1);
 
-
-
-/******************************************
-BUNUS
-******************************************/
+/****************************************************
+WEREHOUSE
+****************************************************/
 
 INSERT INTO `Tab_building`
 (
@@ -970,16 +991,15 @@ INSERT INTO `Tab_building`
 `rank_point`)
 VALUES
 (
-'Foundry',
+'Werehouse',
 1,
 60,
-60,
+0,
 0,
 40,
-20,
-20,
-1
-);
+15,
+15,
+1);
 
 INSERT INTO `Tab_building`
 (
@@ -994,112 +1014,15 @@ INSERT INTO `Tab_building`
 `rank_point`)
 VALUES
 (
-'Foundry',
+'Werehouse',
 2,
 150,
-150,
 0,
-140,
-108,
-108,
-4
-);
-
-INSERT INTO `Tab_building`
-(
-`title`,
-`level`,
-`cost_wood`,
-`cost_stone`,
-`cost_iron`,
-`destruction_cost`,
-`build_time`,
-`destruction_time`,
-`rank_point`)
-VALUES
-(
-'Foundry',
-3,
-350,
-350,
-0,
-140,
-720,
-720,
-7
-);
-
-INSERT INTO `Tab_building`
-(
-`title`,
-`level`,
-`cost_wood`,
-`cost_stone`,
-`cost_iron`,
-`destruction_cost`,
-`build_time`,
-`destruction_time`,
-`rank_point`)
-VALUES
-(
-'Foundry',
-4,
-1100,
-1100,
-0,
-140,
-5400,
-5400,
-14
-);
-
-INSERT INTO `Tab_building`
-(
-`title`,
-`level`,
-`cost_wood`,
-`cost_stone`,
-`cost_iron`,
-`destruction_cost`,
-`build_time`,
-`destruction_time`,
-`rank_point`)
-VALUES
-(
-'Foundry',
-5,
-2700,
-2700,
-0,
-140,
-12125,
-12125,
-24
-);
-
-INSERT INTO `Tab_building`
-(
-`title`,
-`level`,
-`cost_wood`,
-`cost_stone`,
-`cost_iron`,
-`destruction_cost`,
-`build_time`,
-`destruction_time`,
-`rank_point`)
-VALUES
-(
-'Foundry',
-6,
-5000,
-5000,
 0,
 40,
-24300,
-24300,
-36
-);
+36,
+36,
+1);
 
 INSERT INTO `Tab_building`
 (
@@ -1114,16 +1037,108 @@ INSERT INTO `Tab_building`
 `rank_point`)
 VALUES
 (
-'Foundry',
+'Werehouse',
+3,
+250,
+50,
+0,
+40,
+240,
+240,
+1);
+
+
+INSERT INTO `Tab_building`
+(
+`title`,
+`level`,
+`cost_wood`,
+`cost_stone`,
+`cost_iron`,
+`destruction_cost`,
+`build_time`,
+`destruction_time`,
+`rank_point`)
+VALUES
+(
+'Werehouse',
+4,
+500,
+150,
+0,
+40,
+1800,
+1800,
+1);
+
+INSERT INTO `Tab_building`
+(
+`title`,
+`level`,
+`cost_wood`,
+`cost_stone`,
+`cost_iron`,
+`destruction_cost`,
+`build_time`,
+`destruction_time`,
+`rank_point`)
+VALUES
+(
+'Werehouse',
+5,
+1600,
+400,
+0,
+40,
+4025,
+4025,
+1);
+
+INSERT INTO `Tab_building`
+(
+`title`,
+`level`,
+`cost_wood`,
+`cost_stone`,
+`cost_iron`,
+`destruction_cost`,
+`build_time`,
+`destruction_time`,
+`rank_point`)
+VALUES
+(
+'Werehouse',
+6,
+3000,
+1000,
+0,
+40,
+8100,
+8100,
+1);
+
+INSERT INTO `Tab_building`
+(
+`title`,
+`level`,
+`cost_wood`,
+`cost_stone`,
+`cost_iron`,
+`destruction_cost`,
+`build_time`,
+`destruction_time`,
+`rank_point`)
+VALUES
+(
+'Werehouse',
 7,
-8500,
-8500,
+6000,
+2000,
 0,
-140,
-44280,
-44280,
-50
-);
+40,
+14760,
+14760,
+1);
 
 INSERT INTO `Tab_building`
 (
@@ -1138,16 +1153,15 @@ INSERT INTO `Tab_building`
 `rank_point`)
 VALUES
 (
-'Foundry',
+'Werehouse',
 8,
-13500,
-13500,
+9600,
+4800,
 0,
-140,
-71525,
-71525,
-68
-);
+40,
+23825,
+23825,
+1);
 
 INSERT INTO `Tab_building`
 (
@@ -1162,16 +1176,15 @@ INSERT INTO `Tab_building`
 `rank_point`)
 VALUES
 (
-'Foundry',
+'Werehouse',
 9,
-21500,
-21500,
+15000,
+9000,
 0,
-140,
-107705,
-107705,
-90
-);
+40,
+35885,
+35885,
+1);
 
 INSERT INTO `Tab_building`
 (
@@ -1186,16 +1199,255 @@ INSERT INTO `Tab_building`
 `rank_point`)
 VALUES
 (
-'Foundry',
+'Werehouse',
 10,
-33000,
-33000,
+20000,
+13000,
 0,
-140,
-163325,
-163325,
-120
-);
+40,
+54425,
+54425,
+1);
+
+
+/************************************************
+HIDEOUT
+*************************************************/
+
+INSERT INTO `Tab_building`
+(
+`title`,
+`level`,
+`cost_wood`,
+`cost_stone`,
+`cost_iron`,
+`destruction_cost`,
+`build_time`,
+`destruction_time`,
+`rank_point`)
+VALUES
+(
+'Hideout',
+1,
+0,
+50,
+0,
+40,
+15,
+15,
+1);
+
+INSERT INTO `Tab_building`
+(
+`title`,
+`level`,
+`cost_wood`,
+`cost_stone`,
+`cost_iron`,
+`destruction_cost`,
+`build_time`,
+`destruction_time`,
+`rank_point`)
+VALUES
+(
+'Hideout',
+2,
+0,
+200,
+0,
+40,
+36,
+36,
+1);
+
+INSERT INTO `Tab_building`
+(
+`title`,
+`level`,
+`cost_wood`,
+`cost_stone`,
+`cost_iron`,
+`destruction_cost`,
+`build_time`,
+`destruction_time`,
+`rank_point`)
+VALUES
+(
+'Hideout',
+3,
+0,
+600,
+0,
+40,
+240,
+240,
+1);
+
+
+INSERT INTO `Tab_building`
+(
+`title`,
+`level`,
+`cost_wood`,
+`cost_stone`,
+`cost_iron`,
+`destruction_cost`,
+`build_time`,
+`destruction_time`,
+`rank_point`)
+VALUES
+(
+'Hideout',
+4,
+0,
+1000,
+0,
+40,
+1800,
+1800,
+1);
+
+INSERT INTO `Tab_building`
+(
+`title`,
+`level`,
+`cost_wood`,
+`cost_stone`,
+`cost_iron`,
+`destruction_cost`,
+`build_time`,
+`destruction_time`,
+`rank_point`)
+VALUES
+(
+'Hideout',
+5,
+0,
+1500,
+0,
+40,
+4025,
+4025,
+1);
+
+INSERT INTO `Tab_building`
+(
+`title`,
+`level`,
+`cost_wood`,
+`cost_stone`,
+`cost_iron`,
+`destruction_cost`,
+`build_time`,
+`destruction_time`,
+`rank_point`)
+VALUES
+(
+'Hideout',
+6,
+0,
+2200,
+0,
+40,
+8100,
+8100,
+1);
+
+INSERT INTO `Tab_building`
+(
+`title`,
+`level`,
+`cost_wood`,
+`cost_stone`,
+`cost_iron`,
+`destruction_cost`,
+`build_time`,
+`destruction_time`,
+`rank_point`)
+VALUES
+(
+'Hideout',
+7,
+0,
+3500,
+0,
+40,
+14760,
+14760,
+1);
+
+INSERT INTO `Tab_building`
+(
+`title`,
+`level`,
+`cost_wood`,
+`cost_stone`,
+`cost_iron`,
+`destruction_cost`,
+`build_time`,
+`destruction_time`,
+`rank_point`)
+VALUES
+(
+'Hideout',
+8,
+0,
+4500,
+0,
+40,
+23825,
+23825,
+1);
+
+INSERT INTO `Tab_building`
+(
+`title`,
+`level`,
+`cost_wood`,
+`cost_stone`,
+`cost_iron`,
+`destruction_cost`,
+`build_time`,
+`destruction_time`,
+`rank_point`)
+VALUES
+(
+'Hideout',
+9,
+0,
+6000,
+0,
+40,
+35885,
+35885,
+1);
+
+INSERT INTO `Tab_building`
+(
+`title`,
+`level`,
+`cost_wood`,
+`cost_stone`,
+`cost_iron`,
+`destruction_cost`,
+`build_time`,
+`destruction_time`,
+`rank_point`)
+VALUES
+(
+'Hideout',
+10,
+0,
+8000,
+0,
+40,
+54425,
+54425,
+1);
+
+
+
+
 
 
 

@@ -1,45 +1,39 @@
 <?php
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 namespace app\model\Buildings;
 
 /**
- * Description of BonusBuilding
+ * Description of Tab_storage_buildings
  *
  * @author thiago
  */
-abstract class BonusBuilding extends Building {
+class StorageBuilding extends \app\model\Buildings\Building {
   
-  /**
-   * Percentage of bonus to the compatible building
-   */
-  private $efficiency;
+  protected  $level;
+  protected $storage;
   
-  /**
-   * Percentage of bonus to the Werehouse
-   */
-  private $storage;
-  
-  abstract public function getCompatibleBuilding();
-  
-
-  
-  function getEfficiency() {
-    return $this->efficiency;
+  function getLevel() {
+    return $this->level;
   }
 
   function getStorage() {
     return $this->storage;
   }
 
-  function setEfficiency($efficiency) {
-    $this->efficiency = $efficiency;
+  function setLevel($level) {
+    $this->level = $level;
   }
 
   function setStorage($storage) {
     $this->storage = $storage;
   }
-
-    
+  
   public function getDescription($field) {
     
   }
@@ -57,5 +51,5 @@ abstract class BonusBuilding extends Building {
     return $list;
     
   }
-  
+
 }

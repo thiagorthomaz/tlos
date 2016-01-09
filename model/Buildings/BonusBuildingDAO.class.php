@@ -8,8 +8,13 @@ namespace app\model\Buildings;
  */
 class BonusBuildingDAO extends \app\model\Buildings\BuildingDAO {
   
-  private $efficiency;
-  private $storage;
+  public function selectBuilding($params, $limit = 100) {  
+    $sql = "select * from " . $this->getTable() . " t1";
+    $sql .= "\njoin " . parent::getTable() . " p1";
+    $sql .= "\non p1.level = t1.id";
+    $sql .= $this->where($params);
+    return $this->sendQuery($sql, $params);
+  }
   
   public function getTable() {
     return "Tab_bonus_building";

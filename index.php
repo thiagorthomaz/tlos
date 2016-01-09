@@ -1,7 +1,7 @@
 <?php
 
 $core_path = "/var/www/html/stphp";
-$app_path = "/var/www/html/novo_jogo";
+$app_path = "/var/www/html/tlos";
 
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
