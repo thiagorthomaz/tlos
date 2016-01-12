@@ -10,5 +10,8 @@ namespace app\model\Buildings;
  * @author thiago
  */
 class MillDAO extends \app\model\Buildings\BonusBuildingDAO {
-  
+  public function getModel() {
+    return new \app\model\Buildings\Mill();
+  }
+
 }

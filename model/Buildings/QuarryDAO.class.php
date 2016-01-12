@@ -9,5 +9,8 @@ namespace app\model\Buildings;
  */
 class QuarryDAO extends \app\model\Buildings\BuildingDAO {
   
-  
+  public function getModel() {
+    return new \app\model\Buildings\Quarry();
+  }
+
 }

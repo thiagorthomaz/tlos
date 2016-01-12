@@ -9,5 +9,8 @@ namespace app\model\Buildings;
  */
 class StonemasonDAO extends \app\model\Buildings\BonusBuildingDAO {
 
+  public function getModel() {
+    return new \app\model\Buildings\Stonemason();
+  }
 
 }

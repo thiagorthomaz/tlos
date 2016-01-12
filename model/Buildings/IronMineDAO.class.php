@@ -8,5 +8,8 @@ namespace app\model\Buildings;
  * @author thiago
  */
 class IronMineDAO extends \app\model\Buildings\BuildingDAO {
-  
+  public function getModel() {
+    return new \app\model\Buildings\IronMine();
+  }
+
 }

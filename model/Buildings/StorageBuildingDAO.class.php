@@ -8,7 +8,7 @@ namespace app\model\Buildings;
  *
  * @author thiago
  */
-class StorageBuildingDAO extends \app\model\Buildings\BuildingDAO {
+abstract class StorageBuildingDAO extends \app\model\Buildings\BuildingDAO {
   
   public function getTable() {
     return "Tab_storage_building";
@@ -97,5 +97,5 @@ class StorageBuildingDAO extends \app\model\Buildings\BuildingDAO {
     return $list;
     
   }
-  
+
 }

@@ -7,7 +7,7 @@ namespace app\model\Buildings;
  *
  * @author thiago
  */
-class BuildingDAO extends \app\model\DAO {
+abstract class BuildingDAO extends \app\model\DAO {
   
   public function selectBuilding($params, $limit = 100) {  
     $sql = "select * from " . $this->getTable();

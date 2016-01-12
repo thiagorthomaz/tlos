@@ -9,4 +9,9 @@ namespace app\model\Buildings;
  */
 class WarehouseDAO extends \app\model\Buildings\StorageBuildingDAO {
 
+  
+  public function getModel() {
+    return new \app\model\Buildings\Warehouse();
+  }
+
 }
