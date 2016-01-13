@@ -1,0 +1,19 @@
+<div class="container">
+  
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Panel</h1>
+      <hr>
+      <h2>Your worlds</h2>
+      
+      <p if="worlds.length == 0" class="text-danger">You aren't in a world yet.</p>
+      
+      <div ng-repeat="world in worlds">
+        <button type="button" class="btn btn-success">Go to my worlds</button>
+      </div>
+      <button class="btn btn-primary">Brave a new world</button>
+    </div>
+    
+  </div>
+  
+</div>

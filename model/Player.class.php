@@ -12,6 +12,7 @@ class Player implements \stphp\Database\iDataModel {
   private $id;
   private $nickname;
   private $password;
+  private $email;
   
   public function getDescription($field) {
     
@@ -35,6 +36,14 @@ class Player implements \stphp\Database\iDataModel {
 
   function getPassword() {
     return $this->password;
+  }
+
+  function getEmail() {
+    return $this->email;
+  }
+
+  function setEmail($email) {
+    $this->email = $email;
   }
 
   function setNickname($nickname) {

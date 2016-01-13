@@ -20,7 +20,7 @@ stphp\config\AutoLoad::addNamespace("app\\config", $app_path . "/config");
 stphp\config\AutoLoad::addNamespace("app\\controller", $app_path . "/controller");
 stphp\config\AutoLoad::addNamespace("app\\model", $app_path . "/model");
 stphp\config\AutoLoad::addNamespace("app\\view", $app_path . "/view");
-stphp\config\AutoLoad::addNamespace("app\\exception", $app_path . "/exceptions");
+stphp\config\AutoLoad::addNamespace("app\\exception", $app_path . "/exception");
 
 
 stphp\config\AutoLoad::addNamespace("app\\model\\Buildings", $app_path . "/model/Buildings");

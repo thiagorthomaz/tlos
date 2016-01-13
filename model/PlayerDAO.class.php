@@ -37,5 +37,38 @@ class PlayerDAO extends \app\model\DAO{
   public function getModel() {
     return new \app\model\Player();
   }
+  
+  public function login(\app\model\Player $player) {
+    
+    $params = array("nickname" => $player->getNickname());
+    $query = "select * from " . $this->getTable() . " where nickname = :nickname";
+    $result = $this->sendQuery($query, $params);
+    
+    $player_base = $result[0];
+    
+    if ($this->verifyPassword($player->getPassword(), $player_base['password'])){
+      $session = new \stphp\Session();
+      $player->setId($player_base["id"]);
+      $player->setEmail($player_base["email"]);
+      $player->setPassword(null);
+      $session->write("current_player", $player->getNickname());
+      $session->write($player->getNickname(), array("player" => $player));
+      return true;
+    } else {
+      throw new \app\exception\AuthenticationException("Invalid user or password!");
+    }
+    
+  }
+  
+  public function getCurrentLoggedPlayer(){
+    $session = new \stphp\Session();
+    $current_player = $session->read("current_player");
+    $player = $session->read($current_player);
+    return $player['player'];
+  }
+
+  public function passwordCorrectly($input_password, $hash){
+    return password_verify($input_password, $hash);
+  }
 
 }
