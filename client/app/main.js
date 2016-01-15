@@ -17,6 +17,8 @@ function($routeProvider, $locationProvider){
     }).when('/panel',{
       templateUrl : 'partials/panel.html',
       controller: 'panelCtrl'
+    }).when('/play',{
+      templateUrl : 'partials/play.html'
     });
 
     $locationProvider.html5Mode(false).hashPrefix('!');

@@ -61,14 +61,27 @@ class PlayerDAO extends \app\model\DAO{
   }
   
   public function getCurrentLoggedPlayer(){
+
     $session = new \stphp\Session();
     $current_player = $session->read("current_player");
+    if (is_null($current_player)){
+      throw new \app\exception\AuthenticationException("Forbidden", 403);
+    }
+
     $player = $session->read($current_player);
     return $player['player'];
   }
 
   public function passwordCorrectly($input_password, $hash){
     return password_verify($input_password, $hash);
+  }
+  
+  public function registerWorld($params){
+    
+    $sql = "insert into Tab_player_has_world (id_player, id_world) values (:id_player, :id_world)";
+    $result = $this->sendQuery($sql, $params);
+    return $result;
+    
   }
 
 }

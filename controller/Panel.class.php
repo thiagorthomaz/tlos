@@ -9,16 +9,27 @@ namespace app\controller;
  */
 class Panel extends \stphp\Controller {
   
-  private function getCurrentPlayer(){
+  private function getCurrentPlayer($to_array = true){
     $player_c = new \app\controller\Player();
-    return $player_c->getCurrentPlayer(true);
+    return $player_c->getCurrentPlayer($to_array);
   }
-  public function player(){
-    
-    $response = array();
 
+  private function getRegisteredWorld() {
+    
+    $current_user = $this->getCurrentPlayer(false);
+    $world_dao = new \app\model\WorldDAO();
+    $worlds = $world_dao->selectByPlayer($current_user);
+    
+    return $worlds;;
+    
+  }
+  
+  public function player(){
+
+    $response = array();
+    
     $response['player'] = $this->getCurrentPlayer();
-    $response['worlds'] = array();
+    $response['worlds'] = $this->getRegisteredWorld();
     
     $view = new \app\view\View();
     $view->setData(json_encode($response));

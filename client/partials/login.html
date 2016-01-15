@@ -2,24 +2,52 @@
 <div class="container">
   
   <div class="row">
+
     <div class="col-md-12">
+      
+      <div class="row" ng-include src="'partials/alertTemplate.html'"></div>
 
       <h1>Enjoy a massive real time strategy game!</h1>
       <form>
 
         <div class="form-group">
           <label for="nickname">Nickname</label>
-          <input type="text" class="form-control" id="nickname" placeholder="Your nickname" ng-model="player.nickname">
+          <input type="text" class="form-control" id="nickname" placeholder="Your nickname" ng-model="player.nickname" required="true">
+          <p class="text-danger">{{ errors.nickname }}</p>
         </div>
 
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Your password"  ng-model="player.password">
+          <input type="password" class="form-control" id="password" placeholder="Your password"  ng-model="player.password" required="true">
+          <p class="text-danger">{{ errors.password }}</p>
         </div>
-
+        
+        <div class="checkbox">
+          <label for="register">
+            <input type="checkbox" id="register" ng-model="player.register">
+            Register
+          </label>
+        </div>
+        
+        <div ng-if="player.register">
+          
+          <div class="form-group">
+            <label for="confirm_password">Confirm password</label>
+            <input type="password" class="form-control" id="confirm_password" placeholder="Confirm your password"  ng-model="player.confirm_password">
+            <p class="text-danger" ng-show="(player.password !== player.confirm_password)" ng-hide="player.password == player.confirm_password">These passwords don't match</p>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" class="form-control" id="email" placeholder="Your email" ng-model="player.email">
+            <p class="text-danger">{{ errors.email }}</p>
+          </div>
+          
+        </div>
+        
         <button type="submit" class="btn btn-default" ng-click="submit()">Submit</button>
       </form>
-
+      
     </div>
 
   </div>

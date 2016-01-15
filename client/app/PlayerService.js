@@ -5,3 +5,11 @@ app.factory('Login', ['$resource', function($resource){
   });
 
 }]);
+
+app.factory('Player', ['$resource', function($resource){
+
+  return $resource( site_url + "/player.createWorld", {}, {
+    createWorld: {method: 'POST', url: site_url + "/player.createWorld", cache: false, isArray: false}
+  });
+
+}]);

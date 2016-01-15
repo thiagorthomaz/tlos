@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/tlos/client/package.json</file>
-            <file>file:/var/www/html/tlos/client/index.html</file>
+            <file>file:/var/www/html/tlos/model/Player.class.php</file>
+            <file>file:/var/www/html/tlos/controller/World.class.php</file>
+            <file>file:/var/www/html/tlos/model/PlayerDAO.class.php</file>
+            <file>file:/var/www/html/tlos/model/MapperDAO.class.php</file>
+            <file>file:/var/www/html/tlos/model/Mapper.class.php</file>
         </group>
     </open-files>
 </project-private>
