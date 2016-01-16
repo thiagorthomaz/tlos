@@ -21,7 +21,8 @@ class WorldDAO extends \app\model\DAO{
     $id = $player->getId();
     $sql = "";
     $sql .= "select * from Tab_player_has_world where id_player = :id_player";
-    $player_in_worlds = $this->sendQuery($sql, array("id_player" => $id));
+    $rs = $this->sendQuery($sql, array("id_player" => $id));
+    $player_in_worlds = $rs->getResultSet();
     
     foreach ($player_in_worlds as $pw){
       $model = $this->getModel();

@@ -43,10 +43,15 @@ class PlayerDAO extends \app\model\DAO{
     $params = array("nickname" => $player->getNickname());
     $query = "select * from " . $this->getTable() . " where nickname = :nickname";
     $result = $this->sendQuery($query, $params);
+    $rs = $result->getResultSet();
     
-    $player_base = $result[0];
+    if (isset($rs[0])){
+      $player_base = $rs[0];
+    } else {
+      $player_base['password'] = "";  
+    }
     
-    if ($this->verifyPassword($player->getPassword(), $player_base['password'])){
+    if ( $this->verifyPassword($player->getPassword(), $player_base['password']) ){
       $session = new \stphp\Session();
       $player->setId($player_base["id"]);
       $player->setEmail($player_base["email"]);
@@ -77,7 +82,7 @@ class PlayerDAO extends \app\model\DAO{
   }
   
   public function registerWorld($params){
-    
+    print_r($params);exit;
     $sql = "insert into Tab_player_has_world (id_player, id_world) values (:id_player, :id_world)";
     $result = $this->sendQuery($sql, $params);
     return $result;

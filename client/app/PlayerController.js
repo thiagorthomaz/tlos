@@ -24,7 +24,7 @@ app.controller('loginCtrl', ['$scope', '$location', '$parse', 'Login',
       Login.login({}, $scope.player, function(response){
         
         if ( (response.logged !== undefined) && (response.logged === true) ){
-          $location.path("/panel");
+          //$location.path("/panel");
         } else {
 
           if (response.errors != undefined){
