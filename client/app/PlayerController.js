@@ -24,7 +24,7 @@ app.controller('loginCtrl', ['$scope', '$location', '$parse', 'Login',
       Login.login({}, $scope.player, function(response){
         
         if ( (response.logged !== undefined) && (response.logged === true) ){
-          //$location.path("/panel");
+          $location.path("/panel");
         } else {
 
           if (response.errors != undefined){
@@ -38,8 +38,13 @@ app.controller('loginCtrl', ['$scope', '$location', '$parse', 'Login',
 
             }
           }
-
-          $scope.error = "Please verify the fields";
+          
+          if (response.error !== undefined){
+            $scope.error = response.error;
+          }else {
+            $scope.error = "Please verify the fields";  
+          }
+          
         }
         
       });

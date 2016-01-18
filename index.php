@@ -32,5 +32,12 @@ stphp\STPHP::registerAutoload();
 $session = new stphp\Session();
 $session->start();
 
-$app = new stphp\STPHP();
-$app->handle();
+try{
+  
+  $app = new stphp\STPHP();
+  $app->handle();
+  
+} catch (\app\exception\AppException $auth_exc){
+  echo json_encode(array("error" => $auth_exc->getMessage()));
+}
+

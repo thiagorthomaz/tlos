@@ -87,5 +87,51 @@ class PlayerDAO extends \app\model\DAO{
     return $result;
     
   }
+  
+  public function emailExist(\app\model\Player $player){
+    $params = array(
+      "email" => $player->getEmail()
+    );
+    
+    $sql = "select * from " . $this->getTable() . " where email = :email";
+    $send_result = $this->sendQuery($sql, $params);
+    $rs = $send_result->getResultSet();
+    return count($rs) > 0;
+    
+  }
+  
+  public function nickNameExist(\app\model\Player $player){
+
+    $params = array(
+      "nickname" => $player->getNickname()
+    );
+    
+    $sql = "select * from " . $this->getTable() . " where nickname = :nickname";
+    $send_result = $this->sendQuery($sql, $params);
+    $rs = $send_result->getResultSet();
+    return count($rs) > 0;
+    
+  }
+  
+  /**
+   * 
+   * Verify if doesn't exist a player registered with the e-mail OR nickname.
+   * 
+   * @param \app\model\Player $player
+   * @return boolean
+   */
+  public function isValidNewPlayer(\app\model\Player $player){
+    
+    if ($this->emailExist($player)){
+      throw new \app\exception\AuthenticationException("E-mail already registered.");
+    }
+    
+    if ($this->nickNameExist($player)){
+      throw new \app\exception\AuthenticationException("Nickname already registered.");
+    }
+    
+    return true;
+    
+  }
 
 }

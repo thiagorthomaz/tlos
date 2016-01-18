@@ -64,6 +64,7 @@ class Player extends \stphp\Controller {
       if (count($errors) > 0){
         $errors['errors']['email'] = "E-mail can't be blank";
       } else {
+        $valid = $player_dao->isValidNewPlayer($player);
         $player_dao->insert($player);  
       }
 

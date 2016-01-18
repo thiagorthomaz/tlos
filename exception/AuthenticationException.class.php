@@ -9,9 +9,12 @@ namespace app\exception;
  */
 class AuthenticationException extends \app\exception\AppException{
   
-  function __construct() {
+  public function __construct($message, $code = 0, Exception $previous = null) {
     $this->setHttp_code_status(403);
     $this->setHttp_status("Forbidden");
+
+    parent::__construct($message, $code, $previous);
+
   }
 
   

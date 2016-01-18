@@ -17,7 +17,7 @@ class View implements \stphp\rest\iResponse{
     header("Cache-Control: no-cache, must-revalidate");
     header("Expires: 0");
     header('Content-Type: application/json');
-    
+
     $options = 0;
     if ($this->mode == 'debug') {
       $options = JSON_PRETTY_PRINT;
