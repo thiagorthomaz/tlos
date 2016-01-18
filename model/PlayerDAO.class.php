@@ -82,7 +82,6 @@ class PlayerDAO extends \app\model\DAO{
   }
   
   public function registerWorld($params){
-    print_r($params);exit;
     $sql = "insert into Tab_player_has_world (id_player, id_world) values (:id_player, :id_world)";
     $result = $this->sendQuery($sql, $params);
     return $result;
