@@ -2,10 +2,12 @@ app.controller('panelCtrl', ['$scope', '$location','Panel', 'World', 'Player',
   function($scope, $location, Panel, World, Player){
     
     $scope.new_world_selected = null;
+    $scope.new_city = {city_name : null};
 
     Panel.get(function(response){
       $scope.player = response.player;
       $scope.worlds = response.worlds;
+      $scope.citys = [];
     });
     
     World.getAll(function(response){
@@ -13,8 +15,7 @@ app.controller('panelCtrl', ['$scope', '$location','Panel', 'World', 'Player',
     });
     
     $scope.createWorld = function(){
-      
-      
+
       var post = {id_world : $scope.new_world_selected };
       
       Player.createWorld(post, function(response){

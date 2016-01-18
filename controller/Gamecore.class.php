@@ -11,10 +11,17 @@ class Gamecore extends \stphp\Controller {
   
   public function city(){
     
+    
+    $city_dao = new \app\model\CityDAO();
+    $city = $city_dao->selectCurrent();
+    
     $city_instance_dao = new \app\model\CityInstanceDAO();
     $city_instance = $city_instance_dao->selectAll();
-    print_r($city_instance);
-    exit;
+
+    $view = new \app\view\View();
+    $view->setData(json_encode(array("result" => $city_instance)));
+    return $view;
+    
     
   }
 

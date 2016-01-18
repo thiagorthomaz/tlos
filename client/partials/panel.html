@@ -9,39 +9,82 @@
       <p ng-if="worlds.length == 0" class="text-danger">You aren't in a world yet.</p>
       
       <div ng-repeat="world in worlds">
-        <a href="#!/play">Play on {{world.name}}</a>
+        <a data-toggle="modal" data-target="#select_city" href="">Play on {{world.name}}</a>
       </div>
 
       <hr>
       
       <button class="btn btn-primary" data-toggle="modal" data-target="#select_world">Brave a new world</button>
 
-<!-- Modal -->
-<div class="modal fade" id="select_world" tabindex="-1" role="dialog" aria-labelledby="selectWorld">
-  <div class="modal-dialog" role="document">
-    
-    <form action="POST">
+  <!-- Modal -->
+  <div class="modal fade" id="select_world" tabindex="-1" role="dialog" aria-labelledby="selectWorld">
+    <div class="modal-dialog" role="document">
 
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Select a avaliable world</h4>
-        </div>
-        <div class="modal-body">
-          <select class="form-control" ng-model="new_world_selected">
-            <option ng-repeat="option in avaliable_worlds" value="{{option.id}}">{{option.name}}</option>
-          </select>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="createWorld()">Save changes</button>
-        </div>
-      </div>
+      <form action="POST">
 
-    </form>
-    
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Select a avaliable world</h4>
+          </div>
+
+          <div class="modal-body">
+            <select class="form-control" ng-model="new_world_selected">
+              <option ng-repeat="option in avaliable_worlds" value="{{option.id}}">{{option.name}}</option>
+            </select>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="createWorld()">Brave this world!</button>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
   </div>
-</div>
+
+  <div class="modal fade" id="select_city" tabindex="-1" role="dialog" aria-labelledby="selectCity">
+    <div class="modal-dialog" role="document">
+
+      <form action="POST">
+
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">City</h4>
+          </div>
+
+          <div class="modal-body">
+            <h3>Select a city</h3>
+            <p ng-if="citys.length == 0" class="text-danger">You haven't a city yet.</p>
+
+            <div ng-repeat="city in citys">
+              <a href="#!/play">Play on {{city.name}}</a>
+            </div>
+
+            <div ng-if="citys.length == 0">
+              <hr>
+              <h3>Create a new city</h3>
+              <div class="form-group">
+                <label for="city_name">City name</label>
+                <input type="text" class="form-control" id="city_name" ng-model="new_city.city_name">
+                <p class="text-danger">{{ errors.new_city.city_name }}</p>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="createCity()">Create city</button>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
       
     </div>
     
