@@ -20,8 +20,15 @@ class Panel extends \stphp\Controller {
     $world_dao = new \app\model\WorldDAO();
     $worlds = $world_dao->selectByPlayer($current_user);
     
-    return $worlds;;
+    return $worlds;
     
+  }
+  
+  public function getCitys(){
+
+    $city_c = new \app\controller\City();
+    return $city_c->listByPlyer();
+
   }
   
   public function player(){
@@ -30,6 +37,7 @@ class Panel extends \stphp\Controller {
     
     $response['player'] = $this->getCurrentPlayer();
     $response['worlds'] = $this->getRegisteredWorld();
+    $response['citys'] = $this->getCitys();
     
     $view = new \app\view\View();
     $view->setData(json_encode($response));

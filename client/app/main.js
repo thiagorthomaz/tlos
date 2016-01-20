@@ -17,7 +17,7 @@ function($routeProvider, $locationProvider){
     }).when('/panel',{
       templateUrl : 'partials/panel.html',
       controller: 'panelCtrl'
-    }).when('/play',{
+    }).when('/play/:id',{
       templateUrl : 'partials/play.html',
       controller : 'playCtrl'
     });

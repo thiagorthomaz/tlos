@@ -1,11 +1,12 @@
 <div class="col-sm-12 col-md-12 col-xs-12">
 
-  <div ng-show="error != null" ng-hide="error == null" class="alert alert-danger alert-dismissible" role="alert">
-    <button type="button" class="close" aria-label="Close" ng-click="error = null"><span aria-hidden="true">&times;</span></button>
+  <div ng-show="error != null" ng-hide="error == null" class="alert alert-danger">
+    <button type="button" class="close" data-hide="alert" ng-click="error = null"><span>&times;</span></button>
     <strong>Ops! </strong>
     {{error}}
   </div>
-  <div ng-show="success != null" ng-hide="success == null" class="alert alert-success alert-dismissible" role="alert">
+  
+  <div ng-show="success != null" ng-hide="success == null" class="alert alert-success" role="alert">
     <button type="button" class="close" aria-label="Close" ng-click="success = null"><span aria-hidden="true">&times;</span></button>
     <strong>Sucesso! </strong> {{success}}
   </div>

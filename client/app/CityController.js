@@ -1,10 +1,16 @@
-app.controller('playCtrl', ['$scope',
-  function($scope){
+app.controller('playCtrl', ['$scope', '$routeParams', 'City',
+  function($scope, $routeParams, City){
+    var id = $routeParams.id;
     
-    var city = {city_name : 'Unnamed', total_points : 0};
-    var city_instance = {amount_wood : 0, amount_stone : 0, amount_iron : 0};
-    
-    $scope.city = city;
-    $scope.city_instance = city_instance;
-    
+    City.get({'id_city' : id}, function(result){
+      if (result.city !== undefined ){
+        var city = result.city;
+      }else {
+        var city = {city_name : 'Unnamed', total_points : 0};
+      }
+      
+      $scope.city = city;
+      
+    });
+
   }]);

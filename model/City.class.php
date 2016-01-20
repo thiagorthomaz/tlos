@@ -11,7 +11,11 @@ class City  implements \stphp\Database\iDataModel {
   
   private $id;
   private $id_player;
+  private $id_world;
   private $city_name;
+  private $amount_wood;
+  private $amount_stone;
+  private $amount_iron;
   private $x;
   private $y;
   private $z;
@@ -34,6 +38,37 @@ class City  implements \stphp\Database\iDataModel {
 
   function getZ() {
     return $this->z;
+  }
+  function getId_world() {
+    return $this->id_world;
+  }
+
+  function getAmount_wood() {
+    return $this->amount_wood;
+  }
+
+  function getAmount_stone() {
+    return $this->amount_stone;
+  }
+
+  function getAmount_iron() {
+    return $this->amount_iron;
+  }
+
+  function setId_world($id_world) {
+    $this->id_world = $id_world;
+  }
+
+  function setAmount_wood($amount_wood) {
+    $this->amount_wood = $amount_wood;
+  }
+
+  function setAmount_stone($amount_stone) {
+    $this->amount_stone = $amount_stone;
+  }
+
+  function setAmount_iron($amount_iron) {
+    $this->amount_iron = $amount_iron;
   }
 
   function setId_player($id_player) {

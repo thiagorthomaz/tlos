@@ -10,19 +10,23 @@ namespace app\controller;
 class Gamecore extends \stphp\Controller {
   
   public function city(){
-    
-    
+
+    $player_c = new \app\controller\Player();
+    $player = $player_c->getCurrentPlayer();
+
+    $request = $this->getRequest();
+    $params = $request->getAllParams();
+    $params["id_player"] = $player->getId();
+    $params["id"] = $params["id_city"];
+    unset($params["id_city"]);
+
     $city_dao = new \app\model\CityDAO();
-    $city = $city_dao->selectCurrent();
-    
-    $city_instance_dao = new \app\model\CityInstanceDAO();
-    $city_instance = $city_instance_dao->selectAll();
+    $city = $city_dao->selectByParams($params);
 
     $view = new \app\view\View();
-    $view->setData(json_encode(array("result" => $city_instance)));
+    $view->setData(json_encode(array("city" => $city[0])));
     return $view;
-    
-    
+
   }
 
 
