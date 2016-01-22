@@ -108,10 +108,23 @@ class Player extends \stphp\Controller {
     $registered = $player_dao->registerWorld($params);
     
     $result["created"] = $registered;
-    $result["world"] = $params["id_world"];
+    if ($registered){
+      $result["worlds"]  = $this->getRegisteredWorld();
+    }
+    
     $view = new \app\view\View();
     $view->setData(json_encode(array("result" => $result)));
     return $view;
+    
+  }
+  
+  public function getRegisteredWorld() {
+    
+    $current_user = $this->getCurrentPlayer(false);
+    $world_dao = new \app\model\WorldDAO();
+    $worlds = $world_dao->selectByPlayer($current_user);
+    
+    return $worlds;
     
   }
   

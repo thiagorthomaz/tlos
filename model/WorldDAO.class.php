@@ -24,14 +24,16 @@ class WorldDAO extends \app\model\DAO{
     $rs = $this->sendQuery($sql, array("id_player" => $id));
     $player_in_worlds = $rs->getResultSet();
     
+    $worlds = array();
     foreach ($player_in_worlds as $pw){
       $model = $this->getModel();
       $model->setId($pw['id_world']);
-      $worlds = $this->select($model);
-      return $worlds;
+      $r = $this->select($model);
+      $worlds[] = $r[0];
+      
     }
-    
-    return array();
+
+    return $worlds;
 
   }
 

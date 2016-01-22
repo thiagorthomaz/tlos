@@ -105,7 +105,7 @@ class City  implements \stphp\Database\iDataModel {
   }
 
   public function setId($id) {
-    return $this->id;
+    $this->id = $id;
   }
 
 }

@@ -45,7 +45,7 @@ class City extends \stphp\Controller{
     $city->setAmount_iron(100);
     
     $city_dao->insert($city);
-    
+
     $response = array("city_id" => $city->getId(), 'success' => !is_null($city->getId()));
     $view = new \app\view\View();
     $view->setData(json_encode($response));

@@ -3,12 +3,31 @@
 
     <div class="row">
 
-        <div class="col-md-8 col-xs-4">
-            <p>
-                <strong>City name:</strong> {{city.city_name}}
-                <strong>Points:</strong> {{city.total_points}}
-            </p>
-            
+        <div class="col-md-4 col-xs-4">
+          <div class="row">
+            <strong>City name:</strong> {{city.city_name}}
+            <strong>Points:</strong> {{city.total_points}}
+          </div>
+          
+          <div class="row">
+
+            <div ng-repeat="(key, building) in buildings">
+              <button type="button" class="btn btn-default" ng-click="$parent.selected_build = building[0]">{{ building[0].title }}</button>
+            </div>
+
+          </div>
+          
+          <hr>
+
+          <div class="row">
+            <h4>Selected build: {{selected_build.title}}</h4>
+            <p><strong>Build time:</strong> {{selected_build.build_time}}</p>
+            <p><strong>Destruction time:</strong> {{selected_build.destruction_time}}</p>
+            <p><strong>Wood cost:</strong> {{selected_build.cost_wood}}</p>
+            <p><strong>Stone cost:</strong> {{selected_build.cost_stone}}</p>
+            <p><strong>Iron cost:</strong> {{selected_build.cost_iron}}</p>
+          </div>
+          
         </div>
         
         <div class="col-md-8 col-xs-8">

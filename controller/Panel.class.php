@@ -15,13 +15,9 @@ class Panel extends \stphp\Controller {
   }
 
   private function getRegisteredWorld() {
-    
-    $current_user = $this->getCurrentPlayer(false);
-    $world_dao = new \app\model\WorldDAO();
-    $worlds = $world_dao->selectByPlayer($current_user);
-    
+    $player_c = new \app\controller\Player();
+    $worlds = $player_c->getRegisteredWorld();
     return $worlds;
-    
   }
   
   public function getCitys(){

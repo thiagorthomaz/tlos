@@ -1,6 +1,8 @@
-app.controller('playCtrl', ['$scope', '$routeParams', 'City',
-  function($scope, $routeParams, City){
+app.controller('playCtrl', ['$scope', '$routeParams', 'City', 'Buildings',
+  function($scope, $routeParams, City, Buildings){
     var id = $routeParams.id;
+    
+    var selected_build = null;
     
     City.get({'id_city' : id}, function(result){
       if (result.city !== undefined ){
@@ -10,6 +12,17 @@ app.controller('playCtrl', ['$scope', '$routeParams', 'City',
       }
       
       $scope.city = city;
+      
+    });
+    
+
+    Buildings.get(function(results){
+      
+      var buildings = results.buildings;
+      console.log( buildings );
+
+      $scope.buildings = buildings;
+
       
     });
 

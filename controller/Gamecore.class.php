@@ -30,11 +30,25 @@ class Gamecore extends \stphp\Controller {
   }
 
 
-  public function process(){
+  public function buildings(){
     
-    $request = $this->getRequest();
-    print_r($request->getAllParams());
-    exit;
+    $buildings_c = new \app\controller\Buildings();
+    $return = array();
+
+    $return['farm'] = $buildings_c->farm(false);
+    $return['foundry'] = $buildings_c->foundry(false);
+    $return['hideout'] = $buildings_c->hideout(false);
+    $return['ironMine'] = $buildings_c->ironMine(false);
+    $return['mill'] = $buildings_c->mill(false);
+    $return['quarry'] = $buildings_c->quarry(false);
+    $return['sawmill'] = $buildings_c->sawmill(false);
+    $return['stonemason'] = $buildings_c->stonemason(false);
+    $return['werehouse'] = $buildings_c->werehouse(false);
+    $return['woodcutter'] = $buildings_c->woodcutter(false);
+
+    $view = new \app\view\View();
+    $view->setData(json_encode(array("buildings" => $return)));
+    return $view;
 
   }
   

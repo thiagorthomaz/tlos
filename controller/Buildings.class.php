@@ -9,7 +9,7 @@ namespace app\controller;
  */
 class Buildings extends \stphp\Controller {
 
-  public function farm(){
+  public function farm($toJson = true){
 
     $request = $this->getRequest();
     $params = $request->getAllParams();
@@ -22,13 +22,17 @@ class Buildings extends \stphp\Controller {
     $this->prepareRequest($model_farm);
     $buildings = $farm_dao->selectBuilding($params);
     
-    $view = new \app\view\View();
-    $view->setData(json_encode($buildings));
-    return $view;
+    if ($toJson){
+      $view = new \app\view\View();
+      $view->setData(json_encode($buildings));
+      return $view;
+    } else {
+      return $buildings;
+    }
 
   }
 
-  public function ironMine(){
+  public function ironMine($toJson = true){
     
     $request = $this->getRequest();
     $params = $request->getAllParams();
@@ -41,13 +45,17 @@ class Buildings extends \stphp\Controller {
     $this->prepareRequest($model_iron);
     $buildings = $iron_dao->selectBuilding($params);
     
-    $view = new \app\view\View();
-    $view->setData(json_encode($buildings));
-    return $view;
+    if ($toJson){
+      $view = new \app\view\View();
+      $view->setData(json_encode($buildings));
+      return $view;
+    } else {
+      return $buildings;
+    }
     
   }
   
-  public function quarry(){
+  public function quarry($toJson = true){
     
     $request = $this->getRequest();
     $params = $request->getAllParams();
@@ -60,13 +68,17 @@ class Buildings extends \stphp\Controller {
     $this->prepareRequest($model_quarry);
     $buildings = $quarry_dao->selectBuilding($params);
     
-    $view = new \app\view\View();
-    $view->setData(json_encode($buildings));
-    return $view;
+    if ($toJson){
+      $view = new \app\view\View();
+      $view->setData(json_encode($buildings));
+      return $view;
+    } else {
+      return $buildings;
+    }
     
   }
   
-  public function woodcutter(){
+  public function woodcutter($toJson = true){
     
     $request = $this->getRequest();
     $params = $request->getAllParams();
@@ -80,13 +92,17 @@ class Buildings extends \stphp\Controller {
     $this->prepareRequest($model_woodcutter);
     $buildings = $woodcutter_dao->selectBuilding($params);
     
-    $view = new \app\view\View();
-    $view->setData(json_encode($buildings));
-    return $view;
+    if ($toJson){
+      $view = new \app\view\View();
+      $view->setData(json_encode($buildings));
+      return $view;
+    } else {
+      return $buildings;
+    }
     
   }
   
-  public function foundry(){
+  public function foundry($toJson = true){
     
     $request = $this->getRequest();
     $params = $request->getAllParams();
@@ -100,13 +116,17 @@ class Buildings extends \stphp\Controller {
     $this->prepareRequest($foundry);
     $buildings = $foundry_dao->selectBuilding($params);
     
-    $view = new \app\view\View();
-    $view->setData(json_encode($buildings));
-    return $view;
+    if ($toJson){
+      $view = new \app\view\View();
+      $view->setData(json_encode($buildings));
+      return $view;
+    } else {
+      return $buildings;
+    }
     
   }
   
-  public function mill(){
+  public function mill($toJson = true){
     
     $request = $this->getRequest();
     $params = $request->getAllParams();
@@ -120,13 +140,17 @@ class Buildings extends \stphp\Controller {
     $this->prepareRequest($mill);
     $buildings = $mill_dao->selectBuilding($params);
     
-    $view = new \app\view\View();
-    $view->setData(json_encode($buildings));
-    return $view;
+    if ($toJson){
+      $view = new \app\view\View();
+      $view->setData(json_encode($buildings));
+      return $view;
+    } else {
+      return $buildings;
+    }
     
   }
   
-  public function sawmill(){
+  public function sawmill($toJson = true){
     
     $request = $this->getRequest();
     $params = $request->getAllParams();
@@ -140,13 +164,17 @@ class Buildings extends \stphp\Controller {
     $this->prepareRequest($sawmill);
     $buildings = $sawmill_dao->selectBuilding($params);
     
-    $view = new \app\view\View();
-    $view->setData(json_encode($buildings));
-    return $view;
+    if ($toJson){
+      $view = new \app\view\View();
+      $view->setData(json_encode($buildings));
+      return $view;
+    } else {
+      return $buildings;
+    }
     
   }
   
-  public function stonemason(){
+  public function stonemason($toJson = true){
     
     $request = $this->getRequest();
     $params = $request->getAllParams();
@@ -160,13 +188,17 @@ class Buildings extends \stphp\Controller {
     $this->prepareRequest($stonemason);
     $buildings = $stonemason_dao->selectBuilding($params);
     
-    $view = new \app\view\View();
-    $view->setData(json_encode($buildings));
-    return $view;
+    if ($toJson){
+      $view = new \app\view\View();
+      $view->setData(json_encode($buildings));
+      return $view;
+    } else {
+      return $buildings;
+    }
     
   }
   
-  public function werehouse(){
+  public function werehouse($toJson = true){
     
     $request = $this->getRequest();
     $params = $request->getAllParams();
@@ -180,13 +212,17 @@ class Buildings extends \stphp\Controller {
     $this->prepareRequest($werehouse);
     $buildings = $werehouse_dao->selectBuilding($params);
     
-    $view = new \app\view\View();
-    $view->setData(json_encode($buildings));
-    return $view;
+    if ($toJson){
+      $view = new \app\view\View();
+      $view->setData(json_encode($buildings));
+      return $view;
+    } else {
+      return $buildings;
+    }
     
   }
 
-  public function hideout(){
+  public function hideout($toJson = true){
     
     $request = $this->getRequest();
     $params = $request->getAllParams();
@@ -200,9 +236,13 @@ class Buildings extends \stphp\Controller {
     $this->prepareRequest($hideout);
     $buildings = $hideout_dao->selectBuilding($params);
     
-    $view = new \app\view\View();
-    $view->setData(json_encode($buildings));
-    return $view;
+    if ($toJson){
+      $view = new \app\view\View();
+      $view->setData(json_encode($buildings));
+      return $view;
+    } else {
+      return $buildings;
+    }
     
   }
   

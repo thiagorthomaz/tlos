@@ -6,14 +6,16 @@ namespace app\model\Buildings;
  *
  * @author thiago
  */
-class BonusBuildingDAO extends \app\model\Buildings\BuildingDAO {
+abstract class BonusBuildingDAO extends \app\model\Buildings\BuildingDAO {
   
   public function selectBuilding($params, $limit = 100) {  
     $sql = "select * from " . $this->getTable() . " t1";
     $sql .= "\njoin " . parent::getTable() . " p1";
     $sql .= "\non p1.level = t1.id";
     $sql .= $this->where($params);
-    return $this->sendQuery($sql, $params);
+    $result = $this->sendQuery($sql, $params);
+    $rs = $result->getResultSet();
+    return $rs;
   }
   
   public function getTable() {
