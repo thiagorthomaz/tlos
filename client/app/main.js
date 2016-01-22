@@ -8,8 +8,8 @@ var app = angular.module('app',[
 
 var site_url = "http://localhost/tlos/";
 
-app.config(['$routeProvider', '$locationProvider',
-function($routeProvider, $locationProvider){
+app.config(['$routeProvider', '$locationProvider', '$httpProvider',
+function($routeProvider, $locationProvider, $httpProvider){
   $routeProvider.
     when('/',{
       templateUrl : 'partials/login.html',
@@ -23,6 +23,21 @@ function($routeProvider, $locationProvider){
     });
 
     $locationProvider.html5Mode(false).hashPrefix('!');
+    $httpProvider.interceptors.push('httpRequestInterceptor');
 
 }]);
+
+
+app.factory('httpRequestInterceptor', function () {
+  return {
+    request: function (config) {
+
+      config.headers['Authorization'] = 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==';
+      config.headers['Accept'] = 'application/json;odata=verbose';
+
+      return config;
+    }
+  };
+});
+
 
