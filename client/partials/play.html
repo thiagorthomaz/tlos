@@ -1,9 +1,8 @@
 <div class="container-fluid">
-    
 
     <div class="row">
 
-        <div class="col-md-4 col-xs-4">
+        <div class="col-md-2 col-xs-2">
           <div class="row">
             <strong>City name:</strong> {{city.city_name}}
             <strong>Points:</strong> {{city.total_points}}
@@ -29,14 +28,17 @@
           </div>
           
         </div>
-        
-        <div class="col-md-8 col-xs-8">
+
+        <div class="col-md-10 col-xs-10">
             
-            <div class="row">
-                <strong>Wood:</strong> {{city.amount_wood}}
-                <strong>Stone:</strong> {{city.amount_stone}}
-                <strong>Iron:</strong> {{city.amount_iron}}
-            </div>
+          <div class="row">
+              <strong>Wood:</strong> {{city.amount_wood}}
+              <strong>Stone:</strong> {{city.amount_stone}}
+              <strong>Iron:</strong> {{city.amount_iron}}
+          </div>
+          <div class="row" ng-controller="PlayCtrl">
+            <canvas width="1344" height="1344" style="border: 1px solid;" id="city"></canvas>
+          </div>
             
         </div>
 

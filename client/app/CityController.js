@@ -19,7 +19,6 @@ app.controller('playCtrl', ['$scope', '$routeParams', 'City', 'Buildings',
     Buildings.get(function(results){
       
       var buildings = results.buildings;
-      console.log( buildings );
 
       $scope.buildings = buildings;
 
