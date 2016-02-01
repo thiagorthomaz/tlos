@@ -5,6 +5,7 @@ var c = null;
 app.controller('PlayCtrl', ['$scope',
   function($scope){
     loadGrid();
+    loadTerrain();
     
   }]);
 
@@ -22,7 +23,7 @@ function loadGrid() {
     for(var j = 0; j<21; j++) {
 
       ctx.rect(i*tile_with, j*tile_with, (i*tile_with) + tile_with, (j*tile_heigh) + tile_heigh);
-      ctx.fillStyle = 'white';
+      ctx.fillStyle = 'transparent';
       ctx.fill();
       ctx.lineWidth = 1;
       ctx.strokeStyle = 'black';
@@ -31,6 +32,20 @@ function loadGrid() {
     }
 
   }      
+
+}
+
+function loadTerrain() {
+  
+  var ct = document.getElementById("terrain");
+  var ctx = ct.getContext("2d");
+  
+  var imageObj = new Image();
+  imageObj.onload = function() {
+    ctx.drawImage(imageObj, 0, 0);
+  };
+  
+  imageObj.src = 'http://localhost/tlos/client/images/terreno-1.png';
 
 }
 
