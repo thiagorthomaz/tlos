@@ -1,4 +1,4 @@
-var tile_with = 64;
+var tile_with = 128;
 var tile_heigh = 64;
 var c = null;
 
@@ -6,6 +6,7 @@ app.controller('PlayCtrl', ['$scope',
   function($scope){
     loadGrid();
     loadTerrain();
+    loadBuilding();
     
   }]);
 
@@ -13,7 +14,7 @@ app.controller('PlayCtrl', ['$scope',
 function loadGrid() {
   
   c = document.getElementById("city");
-  c.addEventListener("click", function(e){ pixeltoTile(e); }, false)
+  //c.addEventListener("click", function(e){ pixeltoTile(e); }, false);
   var ctx = c.getContext("2d");
   
   ctx.beginPath();
@@ -22,7 +23,7 @@ function loadGrid() {
 
     for(var j = 0; j<21; j++) {
 
-      ctx.rect(i*tile_with, j*tile_with, (i*tile_with) + tile_with, (j*tile_heigh) + tile_heigh);
+      ctx.rect( i*tile_with, j*tile_heigh, tile_with, tile_heigh);
       ctx.fillStyle = 'transparent';
       ctx.fill();
       ctx.lineWidth = 1;
@@ -46,6 +47,21 @@ function loadTerrain() {
   };
   
   imageObj.src = 'http://localhost/tlos/client/images/terreno-1.png';
+
+}
+
+function loadBuilding() {
+  
+  var ct = document.getElementById("buildings");
+  ct.addEventListener("click", function(e){ pixeltoTile(e); }, false)
+  var ctx = ct.getContext("2d");
+  
+  var imageObj = new Image();
+  imageObj.onload = function() {
+    ctx.drawImage(imageObj, 1344,600 );
+  };
+  
+  imageObj.src = 'http://localhost/tlos/client/images/castle.png';
 
 }
 

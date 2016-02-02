@@ -1,4 +1,4 @@
-#city, #terrain {
+#city, #terrain, #buildings {
     position: absolute;
     top: 20px;    
 }
