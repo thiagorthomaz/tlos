@@ -19,6 +19,7 @@ abstract class Building implements \stphp\Database\iDataModel{
   protected $build_time;
   protected $destruction_time;
   protected $rank_point;
+  protected $image;
   
   public function __get($name) {
     return $this->$name;
@@ -64,6 +65,14 @@ abstract class Building implements \stphp\Database\iDataModel{
     return $this->rank_point;
   }
 
+  function getImage() {
+    return $this->image;
+  }
+
+  function setImage($image) {
+    $this->image = $image;
+  }
+  
   public function setCostIron($cost) {
     $this->cost_iron = $cost;
   }
