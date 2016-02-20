@@ -1,5 +1,6 @@
-app.controller('playCtrl', ['$scope', '$routeParams', 'City', 'Buildings',
-  function($scope, $routeParams, City, Buildings){
+app.controller('playCtrl', ['$scope', '$rootScope', '$routeParams', 'City', 'Buildings', 'cityBuildings',
+  function($scope, $rootScope, $routeParams, City, Buildings, cityBuildings){
+
     var id = $routeParams.id;
     
     var selected_build = null;
@@ -17,12 +18,14 @@ app.controller('playCtrl', ['$scope', '$routeParams', 'City', 'Buildings',
     
 
     Buildings.get(function(results){
-      
       var buildings = results.buildings;
-
-      $scope.buildings = buildings;
-
-      
+      //$scope.buildings = buildings;
+      $rootScope.$broadcast('buildings', buildings);
+    });
+    
+    cityBuildings.get({'id_city' : id}, function(results){
+      var city_buildings = results.city_buildings;
+      $rootScope.$broadcast('city_buildings', city_buildings);
     });
 
   }]);

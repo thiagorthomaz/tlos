@@ -9,11 +9,13 @@
           </div>
           
           <div class="row">
-
+            
+            
+            
             <div ng-repeat="(key, building) in buildings">
               <button type="button" class="btn btn-default" ng-click="$parent.selected_build = building[0]">{{ building[0].title }}</button>
             </div>
-
+            
           </div>
           
           <hr>
@@ -36,8 +38,8 @@
               <strong>Stone:</strong> {{city.amount_stone}}
               <strong>Iron:</strong> {{city.amount_iron}}
           </div>
-          <div class="row" ng-controller="PlayCtrl">
-            
+          <div class="row" ng-controller="gameCtrl">
+            <p>{{autoUpdateTimer}}</p>
             <canvas width="2688" height="1344" id="terrain"></canvas>
             <canvas width="2688" height="1344" id="city"></canvas>
             <canvas width="2688" height="1344" id="buildings"></canvas>

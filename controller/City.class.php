@@ -53,4 +53,21 @@ class City extends \stphp\Controller{
     
   }
   
+  public function cityBuildings(){
+    
+    $request = $this->getRequest();
+    $params = $request->getAllParams();
+    $id_city = $params['id_city'];
+    
+    $city = new \app\model\City();
+    
+    $city->setId($id_city);
+
+    $city_dao = new \app\model\CityDAO();
+    $result = $city_dao->selectCityBuildings($city);
+    
+    return $result;
+
+  }
+  
 }

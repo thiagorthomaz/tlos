@@ -77,6 +77,15 @@ class Gamecore extends \stphp\Controller {
 
   }
   
+  public function cityBuildings(){
+    $city_c = new \app\controller\City();
+    $city_buildings = $city_c->cityBuildings();
+    
+    $view = new \app\view\View();
+    $view->setData(json_encode(array("city_buildings" => $city_buildings)));
+    return $view;
+
+  }
   
   
 }

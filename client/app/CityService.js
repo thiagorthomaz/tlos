@@ -7,6 +7,14 @@ app.factory('City', ['$resource', function($resource){
 
 }]);
 
+app.factory('cityBuildings', ['$resource', function($resource){
+
+  return $resource( site_url + "/gamecore.cityBuildings:id", {}, {
+    get : { method: 'GET', cache: false, isArray: false }
+  });
+
+}]);
+
 app.factory('Buildings', ['$resource', function($resource){
 
   return $resource( site_url + "/gamecore.buildings", {}, {

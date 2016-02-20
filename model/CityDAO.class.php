@@ -39,5 +39,15 @@ class CityDAO extends \app\model\DAO {
     return $rs;
     
   }
+  
+  public function selectCityBuildings(\app\model\City $city){
+    
+    $params = array("id_city" => $city->getId());
+    $sql = "select * from Tab_city_Tab_building " . $this->where($params);
+    $send_result = $this->sendQuery($sql, $params);
+    $rs = $send_result->getResultSet();
+    return $rs;
+    
+  }
 
 }
