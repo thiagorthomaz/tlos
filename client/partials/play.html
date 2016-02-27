@@ -7,27 +7,39 @@
             <strong>City name:</strong> {{city.city_name}}
             <strong>Points:</strong> {{city.total_points}}
           </div>
-          
-          <div class="row">
-            
-            
-            
-            <div ng-repeat="(key, building) in buildings">
-              <button type="button" class="btn btn-default" ng-click="$parent.selected_build = building[0]">{{ building[0].title }}</button>
-            </div>
-            
-          </div>
-          
-          <hr>
 
-          <div class="row">
-            <h4>Selected build: {{selected_build.title}}</h4>
-            <p><strong>Build time:</strong> {{selected_build.build_time}}</p>
-            <p><strong>Destruction time:</strong> {{selected_build.destruction_time}}</p>
-            <p><strong>Wood cost:</strong> {{selected_build.cost_wood}}</p>
-            <p><strong>Stone cost:</strong> {{selected_build.cost_stone}}</p>
-            <p><strong>Iron cost:</strong> {{selected_build.cost_iron}}</p>
+          <div id="menu">
+              {{selected_build}}
+            <div class="row" ng-if="selected_build == undefined">
+                <h4>Select one to build</h4>
+                <div ng-repeat="(building_name, building) in buildings"> 
+                    <div ng-repeat="(id, b) in building" ng-if="b.level == 1"> 
+                        <img ng-src="{{b.image}}" ng-click="selectOneBuilding(b)">
+                        <p>{{b.title}}</p>
+                    </div>
+                    
+                </div>
+                
+            </div>              
+            <div class="row" ng-if="selected_build != undefined">
+                <h4>Selected build: {{selected_build.title}}</h4>
+                
+                <img ng-src="{{selected_build.image}}">
+                <p><strong>Build time:</strong> {{selected_build.build_time}}</p>
+                <p><strong>Destruction time:</strong> {{selected_build.destruction_time}}</p>
+                <p><strong>Wood cost:</strong> {{selected_build.cost_wood}}</p>
+                <p><strong>Stone cost:</strong> {{selected_build.cost_stone}}</p>
+                <p><strong>Iron cost:</strong> {{selected_build.cost_iron}}</p>
+                <p>
+                    <button class="btn btn-success" ng-if="selected_build.level == 0">Build</button>
+                    <button class="btn btn-primary" ng-if="selected_build.level < 10">Update</button>
+                    <button class="btn btn-danger">Destroy</button>
+                </p>
+                
+            </div>
+          
           </div>
+          
           
         </div>
 

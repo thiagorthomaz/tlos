@@ -1,4 +1,10 @@
 #city, #terrain, #buildings {
     position: absolute;
-    top: 20px;    
+    top: 20px;
+    z-index: 1;
+}
+
+#menu  {
+    position: fixed;
+    z-index: 2;
 }

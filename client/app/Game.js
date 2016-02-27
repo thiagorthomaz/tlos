@@ -3,6 +3,10 @@ var tile_heigh = 64;
 var c = null;
 var current_tile = null;
 
+images_preloaded = false;
+load_count = 0;
+total_images = 0;
+  
 /*******************
 * Image load variables
 *******************/
@@ -12,6 +16,12 @@ var total_images = 0;
 var images_preloaded = false;
 display_images = false;
 var loaded_images;
+/**
+* List of all possible buildings to construct.
+* The index is the building ID
+* @type buildings
+*/
+var all_buildings = new Array();
     
 window.requestAnimFrame = (function(){
   return  window.requestAnimationFrame       ||
@@ -29,14 +39,26 @@ app.controller('gameCtrl', ['$scope',
     
     $scope.autoUpdateTimer = 30;
 
+    /**
+     * Get canvas for buildings.
+     * @type Element
+     */
     var buildings_canvas = document.getElementById("buildings");
     var build_context = buildings_canvas.getContext("2d");
+
+    /**
+     * List of city buildings.
+     * @type city_buildings
+     */
     var loaded_city_buildings;
+    
     init();
     
     function init() {
       $scope.$on('buildings', function(event, buildings) {
-        loaded_images = loadBuildingImages(buildings);
+        loaded_images = prepareBuildings(buildings);
+        $scope.$parent.buildings = buildings;
+        console.log($scope);
       });
       $scope.$on('city_buildings', function(event, city_buildings) {
         loaded_city_buildings = city_buildings;
@@ -64,9 +86,11 @@ app.controller('gameCtrl', ['$scope',
           $scope.autoUpdateTimer++;
           
           if (images_preloaded && !display_images){
-            
             drawBuildings();
+            //console.log($scope);
           }
+          
+          $scope.$parent.selected_build = selectBuilding();
 
         });
       }
@@ -76,6 +100,30 @@ app.controller('gameCtrl', ['$scope',
       drawBuildingsOnCanvas(build_context, loaded_city_buildings, loaded_images);
       display_images = true;
     }
+
+    function selectBuilding(){
+      if ( (current_tile != null)) {
+
+        for (var i in loaded_city_buildings){
+          var build = loaded_city_buildings[i];
+          
+          if (build.x == current_tile.x && build.y == current_tile.y) {
+            return  selectBuildingById(build.id_building);
+          }
+        }
+        
+        current_tile = null;
+
+      }
+      
+
+    }
+    
+    function selectBuildingById(id){
+      var current_building = all_buildings[id];
+      return current_building;
+    }
+
 
   }]);
 
@@ -126,30 +174,20 @@ function drawBuildingsOnCanvas(build_context, city_buildings, loaded_images) {
 
 }
 
-function loadBuildingImages(image_files){
+function prepareBuildings(buildings){
   
-  images_preloaded = false;
-  load_count = 0;
-  total_images = 0;
+
   var loaded_images = new Array();
 
-  for (var type_build in image_files){
+  for (var type_build in buildings){
     
-    var load_total = image_files[type_build].length;
+    var load_total = buildings[type_build].length;
 
     for (var i = 0; i < load_total; i ++){
       total_images++;
-      var current_building = image_files[type_build][i];
-      var image = new Image();
-      image.onload = function(){
-        load_count++;
-        if (load_count == total_images){
-          images_preloaded = true;
-        }
-
-      };
-
-      image.src = current_building.image;
+      var current_building = buildings[type_build][i];
+      var image = loadBuildingImages(current_building);
+      all_buildings[current_building.id] = current_building;
       loaded_images[current_building.id] = image;
     }
     
@@ -159,11 +197,22 @@ function loadBuildingImages(image_files){
 
 }
 
+function loadBuildingImages(current_building){
+  var image = new Image();
+  image.onload = function(){
+    load_count++;
+    if (load_count == total_images){
+      images_preloaded = true;
+    }
+  };
+  image.src = current_building.image;
+  return image;
+}
+
 function mouseListener(e){
   
   var mouse_pos = getMousePos(c, e);
   var pt = pixeltoTile(mouse_pos.x, mouse_pos.y);
-  console.log(pt);
   current_tile = pt;
   return pt;
 

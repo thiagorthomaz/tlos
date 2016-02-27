@@ -3,7 +3,22 @@ app.controller('playCtrl', ['$scope', '$rootScope', '$routeParams', 'City', 'Bui
 
     var id = $routeParams.id;
     
-    var selected_build = null;
+    var selected_building = { 
+      title : null, 
+      build_time :null, 
+      destruction_time : null, 
+      cost_wood:null, 
+      cost_stone:null,
+      cost_iron:null, 
+      image : null
+    };
+    
+    $scope.selected_build = selected_building;
+    
+    $scope.selectOneBuilding = function(building){
+      $scope.selected_building = building;
+      console.log($scope);
+    };
     
     City.get({'id_city' : id}, function(result){
       if (result.city !== undefined ){
@@ -13,13 +28,12 @@ app.controller('playCtrl', ['$scope', '$rootScope', '$routeParams', 'City', 'Bui
       }
       
       $scope.city = city;
-      
+
     });
     
 
     Buildings.get(function(results){
       var buildings = results.buildings;
-      //$scope.buildings = buildings;
       $rootScope.$broadcast('buildings', buildings);
     });
     
@@ -27,5 +41,5 @@ app.controller('playCtrl', ['$scope', '$rootScope', '$routeParams', 'City', 'Bui
       var city_buildings = results.city_buildings;
       $rootScope.$broadcast('city_buildings', city_buildings);
     });
-
+    
   }]);
