@@ -14,10 +14,12 @@ app.controller('playCtrl', ['$scope', '$rootScope', '$routeParams', 'City', 'Bui
     };
     
     $scope.selected_build = selected_building;
+    $scope.selected_building = selected_building;
     
     $scope.selectOneBuilding = function(building){
+      $scope.selected_build = building;
       $scope.selected_building = building;
-      console.log($scope);
+      
     };
     
     City.get({'id_city' : id}, function(result){

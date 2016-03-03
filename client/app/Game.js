@@ -58,7 +58,7 @@ app.controller('gameCtrl', ['$scope',
       $scope.$on('buildings', function(event, buildings) {
         loaded_images = prepareBuildings(buildings);
         $scope.$parent.buildings = buildings;
-        console.log($scope);
+        
       });
       $scope.$on('city_buildings', function(event, city_buildings) {
         loaded_city_buildings = city_buildings;
