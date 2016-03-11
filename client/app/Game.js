@@ -1,7 +1,8 @@
 var tile_with = 128;
 var tile_heigh = 64;
-var c = null;
+var city_canvas = null;
 var current_tile = null;
+var mouse_clicked = false;
 
 images_preloaded = false;
 load_count = 0;
@@ -55,11 +56,12 @@ app.controller('gameCtrl', ['$scope',
     init();
     
     function init() {
-      $scope.$on('buildings', function(event, buildings) {
+
+      $scope.$on('buildings_list', function(event, buildings) {
         loaded_images = prepareBuildings(buildings);
-        $scope.$parent.buildings = buildings;
-        
+        $scope.$parent.buildings_list = buildings;
       });
+
       $scope.$on('city_buildings', function(event, city_buildings) {
         loaded_city_buildings = city_buildings;
       });
@@ -76,6 +78,7 @@ app.controller('gameCtrl', ['$scope',
       
       requestAnimFrame( animate );
       draw();
+      mouse_clicked = false;
 
     }
 
@@ -87,10 +90,12 @@ app.controller('gameCtrl', ['$scope',
           
           if (images_preloaded && !display_images){
             drawBuildings();
-            //console.log($scope);
           }
           
-          $scope.$parent.selected_build = selectBuilding();
+          if (mouse_clicked) {
+            $scope.$parent.selected_building = selectBuilding();
+          }
+          
 
         });
       }
@@ -101,21 +106,26 @@ app.controller('gameCtrl', ['$scope',
       display_images = true;
     }
 
-    function selectBuilding(){
-      if ( (current_tile != null)) {
+    function selectBuilding() {
 
-        for (var i in loaded_city_buildings){
-          var build = loaded_city_buildings[i];
-          
-          if (build.x == current_tile.x && build.y == current_tile.y) {
-            return  selectBuildingById(build.id_building);
-          }
+      for (var i in loaded_city_buildings){
+        var build = loaded_city_buildings[i];
+
+        if (build.x == current_tile.x && build.y == current_tile.y) {
+          return  selectBuildingById(build.id_building);
         }
-        
-        current_tile = null;
-
       }
-      
+
+      return { 
+        id : null,
+        title : null, 
+        build_time :null, 
+        destruction_time : null, 
+        cost_wood:null, 
+        cost_stone:null,
+        cost_iron:null, 
+        image : null
+      };
 
     }
     
@@ -125,20 +135,16 @@ app.controller('gameCtrl', ['$scope',
     }
 
 
-  }]);
+}]);
 
 
 function loadGrid() {
-  
-  c = document.getElementById("city");
-  var ctx = c.getContext("2d");
-  
+  city_canvas = document.getElementById("city");
+  var ctx = city_canvas.getContext("2d");
   ctx.beginPath();
-
   for(var i = 0; i<21; i++) {
 
     for(var j = 0; j<21; j++) {
-
       ctx.rect( i*tile_with, j*tile_heigh, tile_with, tile_heigh);
       ctx.fillStyle = 'transparent';
       ctx.fill();
@@ -150,32 +156,25 @@ function loadGrid() {
 }
 
 function loadTerrain() {
-  
   var ct = document.getElementById("terrain");
   var ctx = ct.getContext("2d");
-  
   var imageObj = new Image();
   imageObj.onload = function() {
     ctx.drawImage(imageObj, 0, 0);
   };
-  
   imageObj.src = 'http://localhost/tlos/client/images/terreno-1.png';
-
 }
 
 function drawBuildingsOnCanvas(build_context, city_buildings, loaded_images) {
-  
   for (var i in city_buildings){
     var building = city_buildings[i];
     var image = loaded_images[building.id_building];
     var pixel_pos = tileToPixel(building.x, building.y);
     build_context.drawImage(image, pixel_pos.x, pixel_pos.y);
   }
-
 }
 
 function prepareBuildings(buildings){
-  
 
   var loaded_images = new Array();
 
@@ -209,17 +208,15 @@ function loadBuildingImages(current_building){
   return image;
 }
 
-function mouseListener(e){
-  
-  var mouse_pos = getMousePos(c, e);
+function mouseListener(e) {
+  var mouse_pos = getMousePos(city_canvas, e);
   var pt = pixeltoTile(mouse_pos.x, mouse_pos.y);
   current_tile = pt;
+  mouse_clicked = true;
   return pt;
-
 }
 
 function pixeltoTile(x, y) {
-
   var tile_pos = {};
   tile_pos.x = Math.floor(x / tile_with);
   tile_pos.y = Math.floor(y / tile_heigh);

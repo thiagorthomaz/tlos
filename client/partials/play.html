@@ -9,7 +9,7 @@
           </div>
 
           <div id="menu">
-{{selected_building.level}}
+
               <div class="row" ng-if="selected_building.title !== null">
                 <h4>Selected build: {{selected_building.title}}</h4>
                 
@@ -21,28 +21,24 @@
                 <p><strong>Iron cost:</strong> {{selected_building.cost_iron}}</p>
                 <p>
                     <button class="btn btn-success" ng-if="selected_building.level == 1">Build</button>
-                    <button class="btn btn-primary" ng-if="selected_building.level < 10">Update</button>
+                    <button class="btn btn-primary" ng-if="selected_building.level < 10 && selected_building.level > 1">Update</button>
                     <button class="btn btn-danger">Destroy</button>
                 </p>
                 
             </div>
               
-            <div class="row" ng-if="selected_build == undefined">
+            <div class="row" ng-if="selected_building.title == null">
                 <h4>Select one to build</h4>
-                <div ng-repeat="(building_name, building) in buildings"> 
+                <div ng-repeat="(building_name, building) in buildings_list"> 
                     <div ng-repeat="(id, b) in building" ng-if="b.level == 1"> 
                         <img ng-src="{{b.image}}" ng-click="selectOneBuilding(b)">
                         <p>{{b.title}}</p>
                     </div>
-                    
                 </div>
-                
             </div>              
-            
-          
+
           </div>
-          
-          
+
         </div>
 
         <div class="col-md-10 col-xs-10">
