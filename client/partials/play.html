@@ -20,9 +20,9 @@
                 <p><strong>Stone cost:</strong> {{selected_building.cost_stone}}</p>
                 <p><strong>Iron cost:</strong> {{selected_building.cost_iron}}</p>
                 <p>
-                    <button class="btn btn-success" ng-if="selected_building.level == 1">Build</button>
-                    <button class="btn btn-primary" ng-if="selected_building.level < 10 && selected_building.level > 1">Update</button>
-                    <button class="btn btn-danger">Destroy</button>
+                  <button class="btn btn-success" ng-if="selected_building.level == 1" ng-click="createNewBuilding()">Build</button>
+                  <button class="btn btn-primary" ng-if="selected_building.level < 10 && selected_building.level > 1">Update</button>
+                  <button class="btn btn-danger">Destroy</button>
                 </p>
                 
             </div>

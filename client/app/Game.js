@@ -97,6 +97,7 @@ app.controller('gameCtrl', ['$scope',
           
           if (Status.mouse_clicked) {
             $scope.$parent.selected_building = selectBuilding();
+            $scope.$parent.selected_tile = CityInfo.current_tile;
           }
           
 

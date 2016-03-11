@@ -16,6 +16,7 @@ class City  implements \stphp\Database\iDataModel {
   private $amount_wood;
   private $amount_stone;
   private $amount_iron;
+  private $total_points;
   private $x;
   private $y;
   private $z;
@@ -53,6 +54,14 @@ class City  implements \stphp\Database\iDataModel {
 
   function getAmount_iron() {
     return $this->amount_iron;
+  }
+
+  function getTotal_points() {
+    return $this->total_points;
+  }
+
+  function setTotal_points($total_points) {
+    $this->total_points = $total_points;
   }
 
   function setId_world($id_world) {

@@ -9,6 +9,12 @@ namespace app\controller;
  */
 class Gamecore extends \stphp\Controller {
   
+  private function getParams(){
+    $request = $this->getRequest();
+    $params = $request->getAllParams();
+    return $params;
+  }
+  
   public function city(){
 
     $player_c = new \app\controller\Player();
@@ -85,6 +91,40 @@ class Gamecore extends \stphp\Controller {
     $view->setData(json_encode(array("city_buildings" => $city_buildings)));
     return $view;
 
+  }
+  
+  public function registerBuilding(){
+
+
+    $params = $this->getParams();
+    
+    if (!isset($params['id_city'])){
+      throw new \app\exception\AppException('City undefined.');
+    }
+    
+    if (!isset($params['tile_selected'])){
+      throw new \app\exception\AppException('Tile undefined.');
+    }
+    
+    
+    $tile = $params['tile_selected'];
+    $building = $params['building_selected'];
+    print_r($building);
+    $id_city = $params['id_city'];
+    
+    if ( !isset($tile['x']) || !isset($tile['y']) ){
+      throw new \app\exception\AppException('Please, select where you want to put the building.');
+    }
+    
+    $city = new \app\model\City();
+    $city->setId($id_city);
+    $city_c = new \app\controller\City();
+    $city = $city_c->getCity($city);
+    
+    
+    exit;
+    
+    
   }
   
   

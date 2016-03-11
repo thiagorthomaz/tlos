@@ -12,18 +12,45 @@ app.controller('playCtrl', ['$scope', '$rootScope', '$routeParams', 'City', 'Bui
       cost_iron:null, 
       image : null
     };
-
+    
+    $scope.selected_tile = null;
     $scope.selected_building = selected_building;
     
     $scope.selectOneBuilding = function(building){
       $scope.selected_building = building;
     };
     
+    $scope.createNewBuilding = function(){
+      createBuilding($scope.selected_building, $scope.selected_tile, cityBuildings, id_city);
+    }
+
+    $scope.updateBuilding = function(){
+      createBuilding($scope.selected_building, $scope.selected_tile, cityBuildings, id_city);
+    }
+
     loadCityInfo(City, id_city, $scope);
     loadAllBuildings(Buildings, $rootScope);
     loadCityBuildings(cityBuildings, id_city, $rootScope);
 
 }]);
+
+function createBuilding(building, tile, cityBuildings, id_city){
+  if (tile !== null){
+    var send_obj = {tile_selected : tile, building_selected : building, id_city: id_city};
+    
+    cityBuildings.registerBuilding(send_obj, function(result){
+      
+    });
+    
+  }
+  console.log(tile);
+  console.log(building);
+}
+
+function updateBuilding(building, tile, cityBuildings, id_city){
+  console.log(tile);
+  console.log(building);
+}
 
 function loadCityInfo(CityService, id_city, $scope){
   CityService.get({'id_city' : id_city}, function(result){
