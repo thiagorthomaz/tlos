@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `mydb` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `mydb`;
--- MySQL dump 10.13  Distrib 5.5.46, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.47, for debian-linux-gnu (x86_64)
 --
 -- Host: 127.0.0.1    Database: mydb
 -- ------------------------------------------------------
--- Server version	5.5.46-0ubuntu0.14.04.2
+-- Server version	5.5.47-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -129,8 +129,8 @@ CREATE TABLE `Tab_city` (
   UNIQUE KEY `x_UNIQUE` (`x`),
   KEY `fk_Tab_city_Tab_world1_idx` (`id_world`),
   KEY `fk_Tab_city_Tab_player1_idx` (`id_player`),
-  CONSTRAINT `fk_Tab_city_Tab_world1` FOREIGN KEY (`id_world`) REFERENCES `Tab_world` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Tab_city_Tab_player1` FOREIGN KEY (`id_player`) REFERENCES `Tab_player` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_Tab_city_Tab_player1` FOREIGN KEY (`id_player`) REFERENCES `Tab_player` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Tab_city_Tab_world1` FOREIGN KEY (`id_world`) REFERENCES `Tab_world` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -160,7 +160,6 @@ CREATE TABLE `Tab_city_Tab_building` (
   PRIMARY KEY (`id_city`,`id_building`),
   UNIQUE KEY `x_UNIQUE` (`x`),
   UNIQUE KEY `y_UNIQUE` (`y`),
-  UNIQUE KEY `z_UNIQUE` (`z`),
   KEY `fk_City_has_Tab_building_Tab_building1_idx` (`id_building`),
   KEY `fk_City_has_Tab_building_City1_idx` (`id_city`),
   CONSTRAINT `fk_City_has_Tab_building_City1` FOREIGN KEY (`id_city`) REFERENCES `Tab_city` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -174,6 +173,7 @@ CREATE TABLE `Tab_city_Tab_building` (
 
 LOCK TABLES `Tab_city_Tab_building` WRITE;
 /*!40000 ALTER TABLE `Tab_city_Tab_building` DISABLE KEYS */;
+INSERT INTO `Tab_city_Tab_building` VALUES (1,2,10,10,1),(1,6,5,5,2);
 /*!40000 ALTER TABLE `Tab_city_Tab_building` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -425,4 +425,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-10 15:20:19
+-- Dump completed on 2016-03-11 15:28:42
