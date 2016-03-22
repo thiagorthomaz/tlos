@@ -49,5 +49,5 @@ class CityDAO extends \app\model\DAO {
     return $rs;
     
   }
-
-}
+  
+  }

@@ -4,7 +4,12 @@
     z-index: 1;
 }
 
-#menu  {
+#menu {
     position: fixed;
     z-index: 2;
+    width: 200px;
+    padding-left: 10px;
+    overflow: scroll;
+    text-align: center;
 }
+

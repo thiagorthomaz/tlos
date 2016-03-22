@@ -21,12 +21,12 @@ app.controller('playCtrl', ['$scope', '$rootScope', '$routeParams', 'City', 'Bui
     };
     
     $scope.createNewBuilding = function(){
-      createBuilding($scope.selected_building, $scope.selected_tile, cityBuildings, id_city);
-    }
+      createBuilding(cityBuildings, $rootScope, $scope.selected_building, $scope.selected_tile, cityBuildings, id_city);
+    };
 
     $scope.updateBuilding = function(){
-      createBuilding($scope.selected_building, $scope.selected_tile, cityBuildings, id_city);
-    }
+      //createBuilding($scope.selected_building, $scope.selected_tile, cityBuildings, id_city);
+    };
 
     loadCityInfo(City, id_city, $scope);
     loadAllBuildings(Buildings, $rootScope);
@@ -34,17 +34,23 @@ app.controller('playCtrl', ['$scope', '$rootScope', '$routeParams', 'City', 'Bui
 
 }]);
 
-function createBuilding(building, tile, cityBuildings, id_city){
+function createBuilding(cityBuildings, $rootScope, building, tile, cityBuildings, id_city){
   if (tile !== null){
     var send_obj = {tile_selected : tile, building_selected : building, id_city: id_city};
     
     cityBuildings.registerBuilding(send_obj, function(result){
+      if (result.added !== undefined){
+        loadCityBuildings(cityBuildings, id_city, $rootScope);  
+      } else if (result.error !== undefined){
+        alert(result.error);
+      } else {
+        alert("Error undefined");
+      }
       
     });
     
   }
-  console.log(tile);
-  console.log(building);
+
 }
 
 function updateBuilding(building, tile, cityBuildings, id_city){

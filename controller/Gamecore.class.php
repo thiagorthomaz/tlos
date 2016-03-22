@@ -83,10 +83,14 @@ class Gamecore extends \stphp\Controller {
 
   }
   
-  public function cityBuildings(){
+  private function getcityBuildings(){
     $city_c = new \app\controller\City();
     $city_buildings = $city_c->cityBuildings();
+    return $city_buildings;
+  }
+  public function cityBuildings(){
     
+    $city_buildings = $this->getcityBuildings();
     $view = new \app\view\View();
     $view->setData(json_encode(array("city_buildings" => $city_buildings)));
     return $view;
@@ -109,23 +113,33 @@ class Gamecore extends \stphp\Controller {
     
     $tile = $params['tile_selected'];
     $building = $params['building_selected'];
-    print_r($building);
+    
     $id_city = $params['id_city'];
     
     if ( !isset($tile['x']) || !isset($tile['y']) ){
       throw new \app\exception\AppException('Please, select where you want to put the building.');
     }
     
-    $city = new \app\model\City();
-    $city->setId($id_city);
-    $city_c = new \app\controller\City();
-    $city = $city_c->getCity($city);
+    $cb = new \app\model\CityHasBuilding();
+    $cb->setId_city($id_city);
+    $cb->setId_building($building["id"]);
+    $cb->setX($tile['x']);
+    $cb->setY($tile['y']);
+    $cb->setZ(0);
+    $city_building = new \app\model\CityHasBuildingDAO();
+    $added = $city_building->addBuilding($cb);
+    
+    $view = new \app\view\View();
     
     
-    exit;
-    
-    
+    if ($added){
+      $view->setData(json_encode(array("added" => true)));
+    }else {
+      $view->setData(json_encode(array("error" => $added)));  
+    }
+
+    return $view;
   }
   
-  
-}
+    
+  }

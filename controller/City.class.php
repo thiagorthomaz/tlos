@@ -72,7 +72,8 @@ class City extends \stphp\Controller{
   
   public function getCity(\app\model\City $city){
     $city_dao = new \app\model\CityDAO();
-    $city_dao->selectById($city);
+    $c = $city_dao->selectById($city->getId());
+    print_r($c);
     return $city;    
   }
   
